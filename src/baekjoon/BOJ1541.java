@@ -9,7 +9,20 @@ import java.util.Scanner;
  *
  * => 9시3분 solved
  */
+
+/**
+ * java 정규표현식을 사용해서 숫자인지 문자인지 구분이 가능.
+ * String -> matches("[+-]");
+ * 숫자인지 -> matches("[0-9]");
+ * 문자인지(소문자 혹은 대문자) -> matches("[a-zA-Z]");
+ * \d: 숫자와 일치 ([0-9]와 동일)
+ * \D: 숫자 이외의 문자와 일치
+ */
 public class BOJ1541 {
+
+    public static boolean isPlusOrMinus(String temp){
+        return temp.matches("[+-]");
+    }
 
     public static void main(String[] args) {
 
@@ -26,7 +39,7 @@ public class BOJ1541 {
         char[] targetChars = target.toCharArray();
         String numberStringTemp = "";
         for(int i=0; i<targetChars.length; i++){
-            if(targetChars[i] == '+' || targetChars[i] == '-'){ // 기호
+            if(isPlusOrMinus(String.valueOf(targetChars[i]))){ // 기호
                 NumberAndSign.add(numberStringTemp);// 이전에 있던 숫자들을 넣어줌
                 NumberAndSign.add(String.valueOf(targetChars[i]));// 현재의 기호를 넣어줌.
                 numberStringTemp = ""; // 숫자초기화
